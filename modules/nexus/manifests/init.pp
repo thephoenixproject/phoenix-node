@@ -4,5 +4,4 @@ class nexus {
   contain 'nexus::service'
 
   Class['nexus::package'] -> Class['nexus::config'] -> Class['nexus::service']
-
 }
