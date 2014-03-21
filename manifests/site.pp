@@ -1,7 +1,7 @@
 include papply
 
 yumrepo { 'internal':
-  baseurl  => 'http://phoenix-local/rpms',
+  baseurl  => 'http://phoenix-master/rpms',
   enabled  => 1,
   gpgcheck => 0,
 } ->
