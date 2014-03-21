@@ -1,7 +1,6 @@
 class jenkins::package {
   package { "jenkins":
-    ensure   => "installed",
-    version => "1.532-1.1",
+    ensure   => "1.532-1.1",
   }
 
 }
