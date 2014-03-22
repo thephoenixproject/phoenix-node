@@ -10,5 +10,19 @@ class nexus::config {
     home   => '/home/nexus/',
 	managehome => true,
   }
-	
+  
+  file { "/usr/local/nexus":
+	recurse => true,
+	owner => "nexus",
+	group => "nexus",
+	require => User["nexus"]
+  }
+  
+  file { "/usr/local/sonatype-work":
+	recurse => true,
+	owner => "nexus",
+	group => "nexus",
+	require => User["nexus"]
+  }
+  
 }	
