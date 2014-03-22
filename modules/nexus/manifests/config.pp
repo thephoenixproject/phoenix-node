@@ -18,6 +18,13 @@ class nexus::config {
 	require => User["nexus"]
   }
   
+  file { "/usr/local/nexus-2.7.2-03":
+	recurse => true,
+	owner => "nexus",
+	group => "nexus",
+	require => User["nexus"]
+  }
+  
   file { "/usr/local/sonatype-work":
 	recurse => true,
 	owner => "nexus",
