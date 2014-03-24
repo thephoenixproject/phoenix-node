@@ -1,11 +1,9 @@
 class nexus::config {
   
-  file { '/usr/local/nexus/conf/nexus.properties':
-    source => 'puppet:///modules/nexus/nexus.properties',
-    owner => "nexus",
-	group => "nexus",
-	mode    => '0755',
-	require => User["nexus"],
+  file_line{ 'nexus-appliction-host':
+    path  => /usr/local/nexus/conf/nexus.properties,
+    match => '^application-host',
+    line  => "application-host=7000"
   }
   
   group{ 'nexus':
