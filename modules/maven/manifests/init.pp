@@ -1,7 +1,10 @@
+# Define: maven
+#
+# Installs Maven from a tar.gz package.
 define maven (
   $ensure            = 'present',
   $version           = '3.0.5',
-  $maven_root_dir    = "/opt",
+  $maven_root_dir    = '/opt',
   $add_to_path       = false,
   $download_base_url = 'http://apache.mirrors.lucidnetworks.net/maven/maven-3',
   $owner             = 'root',
@@ -47,8 +50,8 @@ define maven (
   # versions, but only one default
   if ($add_to_path == true) {
     file { '/usr/bin/mvn':
-      ensure => $link_ensure,
-      target => "${destination}/bin/mvn",
+      ensure  => $link_ensure,
+      target  => "${destination}/bin/mvn",
       require => Exec["unarchive-apache-maven-${version}"],
     }
   }
