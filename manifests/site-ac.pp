@@ -10,7 +10,7 @@ yumrepo { 'internal':
   gpgcheck => 0,
 }
 
-include java
+#include jdk
 #include maven
 include jenkins
 #include sonar
