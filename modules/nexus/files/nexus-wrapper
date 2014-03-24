@@ -5,13 +5,13 @@
 RETVAL=0;
 
 start() {
-  su - nexus  
+  sudo su - nexus  
   /sbin/service nexust start
   exit $?     
 }
 
 stop() {
-  su - nexus  
+  sudo su - nexus  
   /sbin/service nexust stop
   exit $?	 
 }
@@ -22,7 +22,7 @@ restart() {
 }
 
 status() {
-  su - nexus  
+  sudo su - nexus  
   /sbin/service nexust restart
   exit $?
 }
