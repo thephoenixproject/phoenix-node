@@ -24,7 +24,7 @@ define jdk (
 
   netinstall::wget { "download-jdk-${version}":
     url         => $download_url,
-    args        => '--no-check-certificate --no-cookies - --header "Cookie: oraclelicense=accept-securebackup-cookie"'
+    args        => "--no-check-certificate --no-cookies - --header \"Cookie: oraclelicense=accept-securebackup-cookie\"",
     destination => $temp,
     notify      => Exec["unarchive-jdk-${version}"],
   }
