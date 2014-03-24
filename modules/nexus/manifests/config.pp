@@ -1,12 +1,7 @@
 class nexus::config {
-	
-  file { '/usr/local/nexus-2.7.2-03/bin/nexus':
-    source => 'puppet:///modules/nexus/nexus',
-    mode    => '0755',
-  }
 
   file { '/etc/init.d/nexus':
-    source => 'puppet:///modules/nexus/nexus-wrapper',
+    source => 'puppet:///modules/nexus/nexus',
     mode    => '0755',
   }
   
