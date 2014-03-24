@@ -14,6 +14,11 @@ class nexus (
 	nexus_user	   => $nexus_user, 
 	nexus_group	   => $nexus_group,
   }
+  
+  class{ 'nexus::service':
+    nexus_home_dir => $nexus_home_dir,
+	nexus_user	   => $nexus_user, 
+  }
 	  
   contain 'nexus::package'
   contain 'nexus::config'
