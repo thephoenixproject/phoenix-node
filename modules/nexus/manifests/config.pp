@@ -14,6 +14,7 @@ class nexus::config {
     source => 'puppet:///modules/nexus/nexus.properties',
     owner => "nexus",
 	group => "nexus",
+	mode    => '0755',
 	require => User["nexus"],
   }
 
