@@ -2,7 +2,7 @@ include papply
 
 # All internal execs will use this path by default
 Exec {
-  path => '/usr/bin:/usr/sbin',
+  path => '/bin:/sbin:/usr/bin:/usr/sbin',
 }
 
 # All Package resources will try to pull rpms from here
