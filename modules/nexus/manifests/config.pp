@@ -3,7 +3,7 @@ class nexus::config {
   file_line{ 'nexus-appliction-host':
     path  => '/usr/local/nexus/conf/nexus.properties',
     match => '^application-host',
-    line  => "application-host=7000"
+    line  => "application-host=7000",
   }
   
   group{ 'nexus':

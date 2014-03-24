@@ -16,4 +16,4 @@ include jenkins
 #include sonar
 include nexus
 
-include maven { 'apache-maven-3.0.5': }
+maven { 'apache-maven-3.0.5': }
