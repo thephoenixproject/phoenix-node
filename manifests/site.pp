@@ -1,9 +1,11 @@
 include papply
 
+# All internal execs will use this path by default
 Exec {
   path => '/usr/bin:/usr/sbin',
 }
 
+# All Package resources will try to pull rpms from here
 yumrepo { 'internal':
   baseurl  => 'http://phoenix-master/rpms',
   enabled  => 1,
@@ -12,8 +14,10 @@ yumrepo { 'internal':
 
 include java
 #include maven
-include jenkins
+#include jenkins
 #include sonar
-include nexus
+#include nexus
 
-include maven { 'apache-maven-3.0.5': }
+maven { 'apache-maven-3.0.5':
+  require => Java['jdk-1.7.0'],
+}
