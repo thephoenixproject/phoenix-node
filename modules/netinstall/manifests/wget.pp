@@ -6,6 +6,7 @@
 define netinstall::wget (
   $url,
   $destination,
+  $args,
 ) {
   if !defined(Package['wget']) {
     package { 'wget':
@@ -13,8 +14,10 @@ define netinstall::wget (
     }
   }
 
+  $command = "wget ${args} -O ${destination} ${url}"
+
   exec { "netinstall-wget-${name}":
-    command => "wget -O ${destination} ${url}",
+    command => $command,
     creates => $destination,
     require => Package['wget'],
   }
