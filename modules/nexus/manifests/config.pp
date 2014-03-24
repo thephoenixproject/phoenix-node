@@ -16,7 +16,7 @@ class nexus::config {
   user { 'nexus':
     ensure => present,
 	gid     => 'nexus',
-    home    => '/srv/nexus',
+    home    => '/home/nexus',
     shell   => '/bin/bash', # unfortunately required to start application via script.
     system  => true,
     require => Group['nexus']
