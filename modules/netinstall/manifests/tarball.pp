@@ -1,48 +1,21 @@
-# Define: utilities::tarball
+# Define: netinstall::wget
 #
-# Provides a simple means for downloading and
-# extracting tarballs from the internets.
-# Inspired by the puppi netinstall type.
-define netinstall::tarball(
+# Downloads a file over HTTP.
+# Will not re-download the file if
+# $destination already exists.
+define netinstall::wget (
   $url,
-  $final_destination,
-  $work_dir = '/tmp',
-  $owner    = 'root',
-  $group    = 'root',
-  $mode     = '0755',
-  $path     = '/bin:/sbin:/usr/bin:/usr/sbin',
+  $destination,
 ) {
-  $the_tarball = "${work_dir}/${name}.tar.gz"
-
-  Exec {
-    path => $path,
+  if !defined(Package['wget']) {
+    package { 'wget':
+      ensure => present,
+    }
   }
 
-  package { 'wget':
-    ensure => present,
-  }
-
-  file { $final_destination:
-    ensure => directory,
-    owner  => $owner,
-    group  => $group,
-    mode   => $mode,
-  }
-
-  # If $final_destination already exists, we've probably
-  # already downloaded/expanded its contents in a prior
-  # execution.
-  exec { "download-${name}":
-    command => "wget -O ${the_tarball} ${url}",
-    creates => $final_destination,
+  exec { "netinstall-wget-${name}":
+    command => "wget -O ${destination} ${url}",
+    creates => $destination,
     require => Package['wget'],
-    notify  => Exec["unarchive-${name}"],
-  }
-
-  exec { "unarchive-${name}":
-    command     => "tar -xvzf ${the_tarball}",
-    cwd         => $final_destination,
-    refreshonly => true,
-    require     => File[$final_destination],
   }
 }
