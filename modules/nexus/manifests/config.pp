@@ -17,12 +17,21 @@ class nexus::config {
 	mode    => '0755',
 	require => User["nexus"],
   }
-
+  
+  group{ 'nexus':
+    ensure => present,
+    system => true,
+  }
+  
   user { 'nexus':
     ensure => present,
-    home   => '/home/nexus/',
-    managehome => true,
+	gid     => 'nexus',
+    home    => '/srv/nexus',
+    shell   => '/bin/bash', # unfortunately required to start application via script.
+    system  => true,
+    require => Group['nexus']
   }
+
   
   file { "/usr/local/nexus":
 	ensure => 'link',
