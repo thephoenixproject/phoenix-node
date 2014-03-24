@@ -1,0 +1,50 @@
+#!/bin/bash
+# chkconfig: 2345 80 20
+# description: run levels 2,3,4,5.  start priority is 80.  stop priority is 20.
+#
+RETVAL=0;
+
+start() {
+  su - nexus  
+  /sbin/service nexust start
+  exit $?     
+}
+
+stop() {
+  su - nexus  
+  /sbin/service nexust stop
+  exit $?	 
+}
+
+restart() {
+        stop
+        start
+}
+
+status() {
+  su - nexus  
+  /sbin/service nexust restart
+  exit $?
+}
+
+case "$1" in 
+start)
+        start
+;;
+stop)
+        stop
+;;
+restart)
+        restart
+;;
+status)
+        status
+;;
+
+*)
+
+echo $"Usage: $0 {start|stop|restart}"
+exit 1
+esac
+
+exit $RETVAL 
