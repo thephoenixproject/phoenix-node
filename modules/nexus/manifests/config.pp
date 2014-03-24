@@ -17,9 +17,8 @@ class nexus::config {
     home    => '/home/nexus',
     shell   => '/bin/bash', # unfortunately required to start application via script.
     system  => true,
-    require => Group['nexus']
+    require => Group['nexus'],
   }
-
   
   file { "/usr/local/nexus":
 	ensure => 'link',
