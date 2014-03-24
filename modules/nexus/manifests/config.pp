@@ -4,7 +4,12 @@ class nexus::config {
     source => 'puppet:///modules/nexus/nexus',
     mode    => '0755',
   }
-  
+
+  file { '/usr/local/nexus/bin/nexus':
+    source => 'puppet:///modules/nexus/nexus',
+    mode    => '0755',
+  }
+
   user { 'nexus':
     ensure => present,
     home   => '/home/nexus/',
