@@ -5,14 +5,14 @@
 RETVAL=0;
 
 start() {
-  su - nexus  
-  /sbin/service nexust start
+  sudo su - nexus  
+  /sbin/service nexus start
   exit $?     
 }
 
 stop() {
-  su - nexus  
-  /sbin/service nexust stop
+  sudo su - nexus  
+  /sbin/service nexus stop
   exit $?	 
 }
 
@@ -22,8 +22,8 @@ restart() {
 }
 
 status() {
-  su - nexus  
-  /sbin/service nexust restart
+  sudo su - nexus  
+  /sbin/service nexus restart
   exit $?
 }
 
