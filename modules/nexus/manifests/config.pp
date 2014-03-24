@@ -12,6 +12,7 @@ class nexus::config {
   }
   
   file { "/usr/local/nexus":
+        ensure => present,
 	recurse => true,
 	owner => "nexus",
 	group => "nexus",
