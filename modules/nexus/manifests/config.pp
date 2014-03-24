@@ -2,6 +2,8 @@ class nexus::config (
   $nexus_home_dir,
   $nexus_host,
   $nexus_port,
+  $nexus_user,
+  $nexus_group,
   ) inherits nexus::params {
   
   $nexus_properties_file = "${nexus_home_dir}/conf/nexus.properties"
@@ -25,7 +27,7 @@ class nexus::config (
   
   user { 'nexus':
     ensure => present,
-	gid     => 'nexus',
+	gid     => $nexus_group,
     home    => '/home/nexus',
     shell   => '/bin/bash', # unfortunately required to start application via script.
     system  => true,
@@ -36,22 +38,22 @@ class nexus::config (
 	ensure => 'link',
 	target => '/usr/local/nexus-2.7.2-03',
 	recurse => true,
-	owner => "nexus",
-	group => "nexus",
+	owner => $nexus_user,
+	group => $nexus_group,
 	require => User["nexus"],
   }
   
   file { "/usr/local/nexus-2.7.2-03":
 	recurse => true,
-	owner => "nexus",
-	group => "nexus",
+	owner => $nexus_user,
+	group => $nexus_group,
 	require => User["nexus"],
   }
   
   file { "/usr/local/sonatype-work":
 	recurse => true,
-	owner => "nexus",
-	group => "nexus",
+	owner => $nexus_user,
+	group => $nexus_group,
 	require => User["nexus"],
   }
   
