@@ -9,6 +9,11 @@ class nexus::config {
     source => 'puppet:///modules/nexus/nexus',
     mode    => '0755',
   }
+  
+  file { '/usr/local/nexus/conf/nexus.properties':
+    source => 'puppet:///modules/nexus/nexus.properties',
+    mode    => '0755',
+  }
 
   user { 'nexus':
     ensure => present,
