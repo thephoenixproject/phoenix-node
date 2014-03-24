@@ -8,6 +8,6 @@ yumrepo { 'internal':
 
 include java
 #include maven
-#include jenkins
+include jenkins
 #include sonar
 include nexus
