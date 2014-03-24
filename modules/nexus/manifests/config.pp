@@ -1,9 +1,21 @@
-class nexus::config {
+class nexus::config (
+  $nexus_home_dir,
+  $nexus_host,
+  $nexus_port,
+  ) inherits nexus::params {
+  
+  $nexus_properties_file = "${nexus_home_dir}/conf/nexus.properties"
   
   file_line{ 'nexus-appliction-host':
-    path  => '/usr/local/nexus/conf/nexus.properties',
+    path  => $nexus_properties_file,
     match => '^application-host',
-    line  => "application-host=7000",
+    line  => "application-host=${nexus_host}",
+  }
+  
+  file_line{ 'nexus-appliction-port':
+    path  => $nexus_properties_file,
+    match => '^application-port',
+    line  => "application-port=${nexus_port}",
   }
   
   group{ 'nexus':
