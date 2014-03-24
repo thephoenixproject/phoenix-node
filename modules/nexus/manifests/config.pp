@@ -12,7 +12,8 @@ class nexus::config {
   }
   
   file { "/usr/local/nexus":
-        ensure => present,
+	ensure => 'link',
+	target => '/usr/local/nexus-2.7.2-03',
 	recurse => true,
 	owner => "nexus",
 	group => "nexus",
