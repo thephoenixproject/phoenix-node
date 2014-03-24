@@ -1,5 +1,9 @@
 include papply
 
+Exec {
+  path => '/usr/bin:/usr/sbin',
+}
+
 yumrepo { 'internal':
   baseurl  => 'http://phoenix-master/rpms',
   enabled  => 1,
@@ -11,3 +15,5 @@ include java
 include jenkins
 #include sonar
 include nexus
+
+include maven { 'apache-maven-3.0.5': }
