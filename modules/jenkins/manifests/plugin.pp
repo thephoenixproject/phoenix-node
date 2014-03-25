@@ -7,7 +7,7 @@ define plugin(
   $plugin_name, 
   $version, 
   $ispinned = false
-  ) inherits jenkins:params{
+  ) inherits jenkins:params {
 
   $plugin_url = "${base_url}${plugin_name}${version}"
   $jenkins_home = $params::jenkins_home
