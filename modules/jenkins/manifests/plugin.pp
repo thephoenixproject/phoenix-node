@@ -14,7 +14,7 @@ define jenkins::plugin(
   $plugin_url = "${base_url}/${plugin_name}/${version}/${plugin_filename}"
   $plugin_home = "$jenkins::jenkins_home/plugins"
   
-  netinstall::wget : "${plugin_name}"{
+  netinstall::wget { "${plugin_name}" :
 	destination => "${plugin_home}/${plugin_filename}",
 	url => $plugin_url,
   }
