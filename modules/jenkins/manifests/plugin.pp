@@ -3,7 +3,7 @@
 # Uses wget to pull down an Jenkins plugin
 
 define plugin(
-  $base_url = $params::base_plugin_url, 
+  $base_url, 
   $plugin_name, 
   $version, 
   $ispinned = false
