@@ -16,8 +16,6 @@ include jenkins
 #include sonar
 include nexus
 
-Class['jenkins::params']
-
 jenkins::plugin { 'email-ext' :
   base_url => $jenkins::params::base_plugin_url,
   plugin_name => 'email-ext',
