@@ -20,6 +20,4 @@ yumrepo { 'internal':
 
 #maven { 'apache-maven-3.0.5':
 #  require => Java['jdk-1.7.0'],
-#}
-jdk { '1.7.0':
-}
+include subversion

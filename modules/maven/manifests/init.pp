@@ -14,15 +14,15 @@ define maven (
   include netinstall
 
   $download_url = "${download_base_url}/${version}/binaries/apache-maven-${version}-bin.tar.gz"
-  $temp = "/tmp/apache-maven-${version}-bin.tar.gz"
-  $destination = "${maven_root_dir}/apache-maven-${version}"
+  $temp         = "/tmp/apache-maven-${version}-bin.tar.gz"
+  $destination  = "${maven_root_dir}/apache-maven-${version}"
 
   if ($ensure == 'absent') {
     $directory_ensure = 'absent'
-    $link_ensure = 'absent'
+    $link_ensure      = 'absent'
   } else {
     $directory_ensure = 'directory'
-    $link_ensure = 'link'
+    $link_ensure      = 'link'
   }
 
   netinstall::wget { "download-apache-maven-${version}":
