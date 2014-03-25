@@ -6,7 +6,7 @@
 define netinstall::wget (
   $url,
   $destination,
-  $args,
+  $args = "",
 ) {
   if !defined(Package['wget']) {
     package { 'wget':
