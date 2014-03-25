@@ -3,7 +3,6 @@ class jenkins {
   contain 'jenkins::config'
   contain 'jenkins::service'
   
-  
   Class['jenkins::package'] -> Class['jenkins::config'] -> Class['jenkins::service']
 
   
