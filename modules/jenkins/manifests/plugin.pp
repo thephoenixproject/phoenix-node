@@ -10,10 +10,10 @@ define jenkins::plugin(
   ) {
 
   $plugin_url = "${base_url}${plugin_name}${version}"
-  $jenkins_home = $params::jenkins_home
+  $jenkins_home = $jenkins::params::jenkins_home
 	
   file{ "/tmp/${plugin_name}.txt":
-    content => $plugin_url,
+    content => "url=${plugin_url} jenkins home=${jenkins_home},
   }
   
 #notice Jenkins service class
