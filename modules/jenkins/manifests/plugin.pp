@@ -13,7 +13,7 @@ define jenkins::plugin(
   $jenkins_home = $jenkins::params::jenkins_home
 	
   file{ "/tmp/${plugin_name}.txt":
-    content => "url=${plugin_url} jenkins home=${jenkins_home},
+    content => "url=${plugin_url} jenkins home=${jenkins_home}",
   }
   
 #notice Jenkins service class
