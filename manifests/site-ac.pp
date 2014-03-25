@@ -17,7 +17,6 @@ include jenkins
 include nexus
 
 jenkins::plugin { 'email-ext' :
-  base_url => $jenkins::params::base_plugin_url,
   plugin_name => 'email-ext',
   version => '2.37.1',
 }
