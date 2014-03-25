@@ -2,7 +2,7 @@
 #
 # Uses wget to pull down an Jenkins plugin
 
-define plugin(
+define jenkins::plugin(
   $base_url, 
   $plugin_name, 
   $version, 
