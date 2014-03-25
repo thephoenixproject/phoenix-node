@@ -17,6 +17,7 @@ define jenkins::plugin(
   netinstall::wget { "${plugin_name}" :
 	destination => "${plugin_home}/${plugin_filename}",
 	url => $plugin_url,
+	args => "",
   }
   
   # if pinned, create pinned file
