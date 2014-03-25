@@ -6,16 +6,17 @@ define jenkins::plugin(
   $base_url = $jenkins::base_plugin_url, 
   $plugin_name, 
   $version,
-  $extension = "hpi",
+  $extension = 'hpi',
   $ispinned = false
   ) {
-
-  $plugin_url = "${base_url}/${plugin_name}/${version}/${plugin_name}.${extension}"
+   
+  $plugin_filename = "${plugin_name}.${extension}"
+  $plugin_url = "${base_url}/${plugin_name}/${version}/${plugin_filename}"
   $plugin_home = "$jenkins::jenkins_home/plugins"
   
-  netinstall::wget {
+  netinstall::wget : "${plugin_name}"{
+	destination => "${plugin_home}/${plugin_filename}",
 	url => $plugin_url,
-	destination => "$plugin_home/$plugin_name",
   }
   
   # if pinned, create pinned file
