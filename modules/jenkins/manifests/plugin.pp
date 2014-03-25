@@ -5,17 +5,20 @@
 define jenkins::plugin(
   $base_url = $jenkins::base_plugin_url, 
   $plugin_name, 
-  $version, 
+  $version,
+  $extension = "hpi",
   $ispinned = false
   ) {
 
-  $plugin_url = "${base_url}/${plugin_name}/${version}"
+  $plugin_url = "${base_url}/${plugin_name}/${version}/${plugin_name}.${extension}"
   $plugin_home = "$jenkins::jenkins_home/plugins"
-	
-  file{ "/tmp/${plugin_name}.txt":
-    content => "url=${plugin_url} plugin home=${plugin_home}",
+  
+  netinstall::wget {
+	url => $plugin_url,
+	destination => "$plugin_home/$plugin_name",
   }
   
-#notice Jenkins service class
+  # if pinned, create pinned file
+  # notify Jenkins service class
 	
 }

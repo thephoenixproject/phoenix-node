@@ -18,5 +18,12 @@ include nexus
 
 jenkins::plugin { 'email-ext' :
   plugin_name => 'email-ext',
+  extension => 'hpi',
   version => '2.37.1',
 }
+
+jenkins::plugin { 'plot' :
+  plugin_name => 'plot',
+  version => '1.7',
+}
+
