@@ -4,7 +4,7 @@
 
 $jenkins_home = $params::jenkins_home
 
-define plugin($base_url = $params::base_plugin_url, $plugin_name, $version, $ispinned = false) {{
+define jenkins::plugin($base_url = $params::base_plugin_url, $plugin_name, $version, $ispinned = false) {{
 
     $plugin_url = "${base_url}${plugin_name}${version}"
 	

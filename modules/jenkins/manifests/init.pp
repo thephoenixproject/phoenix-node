@@ -3,7 +3,7 @@ class jenkins {
   contain 'jenkins::config'
   contain 'jenkins::service'
   
-  jenkins::plugin {'email-ext' :
+  class jenkins::plugin {'email-ext' :
       plugin_name => 'email-ext',
       version => '2.37.1',
   }
