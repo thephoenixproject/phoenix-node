@@ -24,14 +24,18 @@ class nexus::config (
     ensure => present,
     system => true,
   }
+
+  file { '/home/nexus': 
+    ensure => directory,
+  }
   
   user { 'nexus':
     ensure => present,
-	gid     => $nexus_group,
+    gid     => $nexus_group,
     home    => '/home/nexus',
     shell   => '/bin/bash', # unfortunately required to start application via script.
     system  => true,
-    require => Group['nexus'],
+    require => [Group['nexus'], File['/home/nexus']]
   }
   
   file { "/usr/local/nexus":
