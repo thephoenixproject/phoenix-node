@@ -31,6 +31,8 @@ define subversion::repository (
     require => File[$subversion::repository_root_directory],
   }
 
+  # Won't run svnadmin create if the directory
+  # already looks like a subversion repository
   exec { "create-repo-${name}":
     command => "svnadmin create ${path}",
     require => File[$path],
