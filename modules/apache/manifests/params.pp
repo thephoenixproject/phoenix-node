@@ -5,4 +5,5 @@ class apache::params {
   $disabled           = false
   $absent             = false
   $www_root_directory = '/opt/apache/www'
+  $package            = 'httpd'
 }
