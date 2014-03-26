@@ -1,15 +1,14 @@
 # Define: subversion::repository
 #
 # Represents a single Subversion repository
-define subversion::repository () {
-  if ($subversion::ensure == 'absent') {
-    $directory_ensure = 'purged'
-  } else {
-    $directory_ensure = 'directory'
+define subversion::repository ()
+{
+  if ($subversion::$_ensure == 'present') {
+    $_ensure == 'directory'
   }
 
   File {
-    ensure => $directory_ensure,
+    ensure => $_ensure,
     owner  => $subversion::owner,
     group  => $subversion::group,
     mode   => $subversion::mode,
