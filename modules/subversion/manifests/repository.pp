@@ -10,7 +10,7 @@ define subversion::repository () {
 
   File {
     ensure => $directory_ensure,
-    onwer  => $subversion::owner,
+    owner  => $subversion::owner,
     group  => $subversion::group,
     mode   => $subversion::mode,
   }
