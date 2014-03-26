@@ -10,7 +10,7 @@ yumrepo { 'internal':
   gpgcheck => 0,
 }
 
-include java
+#include java
 #include maven
 include jenkins
 #include sonar
@@ -25,5 +25,10 @@ jenkins::plugin { 'email-ext' :
 jenkins::plugin { 'plot' :
   plugin_name => 'plot',
   version => '1.7',
+}
+
+jenkins::plugin { 'xvfb' :
+  plugin_name => 'xvfb',
+  version => '1.0.9',
 }
 

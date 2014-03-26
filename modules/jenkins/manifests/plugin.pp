@@ -18,6 +18,7 @@ define jenkins::plugin(
 	destination => "${plugin_home}/${plugin_filename}",
 	url => $plugin_url,
 	args => "",
+        notify => Service['jenkins'],
   }
   
   # if pinned, create pinned file

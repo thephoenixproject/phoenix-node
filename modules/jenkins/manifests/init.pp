@@ -9,6 +9,8 @@ class jenkins inherits jenkins::params{
 
   file { "${jenkins_home}/plugins" :
     ensure => "directory",
+    owner => "jenkins",
+    group => "jenkins",
   }
   
   Class['jenkins::package'] -> Class['jenkins::config'] -> Class['jenkins::service']
