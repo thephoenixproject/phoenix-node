@@ -14,7 +14,7 @@ yumrepo { 'internal':
 #include maven
 include jenkins
 #include sonar
-include nexus
+#include nexus
 
 jenkins::plugin { 'email-ext' :
   plugin_name => 'email-ext',
@@ -29,6 +29,7 @@ jenkins::plugin { 'plot' :
 
 jenkins::plugin { 'xvfb' :
   plugin_name => 'xvfb',
-  version => '1.0.9',
+  version => '1.0.8',
+  ispinned => true,
 }
 
