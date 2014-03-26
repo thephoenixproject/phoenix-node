@@ -27,3 +27,8 @@ jenkins::plugin { 'plot' :
   version => '1.7',
 }
 
+jenkins::plugin { 'xvfb' :
+  plugin_name => 'xvfb',
+  version => '1.0.9',
+}
+
