@@ -1,10 +1,17 @@
 # Define: subversion::repository
 #
 # Represents a single Subversion repository
-define subversion::repository ()
-{
-  if ($subversion::$_ensure == 'present') {
-    $_ensure == 'directory'
+define subversion::repository (
+  $ensure => 'present',
+) {
+  if (! ($ensure in [ present, absent ])) {
+    fail('ensure parameter must be present or absent')
+  }
+
+  if ($ensure == 'present') {
+    $_ensure = 'directory'
+  } else {
+    $_ensure = 'absent'
   }
 
   File {
