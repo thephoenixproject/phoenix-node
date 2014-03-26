@@ -1,4 +1,4 @@
-include papply
+#include papply
 
 Exec {
   path => '/usr/bin:/usr/sbin',
@@ -12,24 +12,25 @@ yumrepo { 'internal':
 
 #include java
 #include maven
-include jenkins
 #include sonar
 #include nexus
 
-jenkins::plugin { 'email-ext' :
-  plugin_name => 'email-ext',
-  extension => 'hpi',
-  version => '2.37.1',
-}
+  include jenkins
 
-jenkins::plugin { 'plot' :
-  plugin_name => 'plot',
-  version => '1.7',
-}
+  jenkins::plugin { 'email-ext' :
+    plugin_name => 'email-ext',
+    extension => 'hpi',
+    version => '2.37.1',
+  }
 
-jenkins::plugin { 'xvfb' :
-  plugin_name => 'xvfb',
-  version => '1.0.8',
-  ispinned => true,
-}
+  jenkins::plugin { 'plot' :
+    plugin_name => 'plot',
+    version => '1.7',
+  }
+
+  jenkins::plugin { 'xvfb' :
+    plugin_name => 'xvfb',
+    version => '1.0.8',
+    ispinned => true,
+  }
 
