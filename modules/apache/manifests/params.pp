@@ -2,6 +2,7 @@
 #
 # Manages parameters for the Apache WWW installation
 class apache::params {
-  $installed          = true
+  $disabled           = false,
+  $absent             = false,
   $www_root_directory = '/opt/apache/www'
 }
