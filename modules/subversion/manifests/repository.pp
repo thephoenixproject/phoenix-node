@@ -17,7 +17,9 @@ define subversion::repository () {
 
   $path = "${subversion::repository_root_directory}/${name}"
 
-  file { $subversion::repository_root_directory: }
+  file { $subversion::repository_root_directory:
+    require => Class['subversion'],
+  }
 
   file { $path:
     require => File[$subversion::repository_root_directory],
@@ -25,6 +27,6 @@ define subversion::repository () {
 
   exec { "create-repo-${name}":
     command => "svnadmin create ${path}",
-    require => [ Class['subversion::package'], File[$path] ],
+    require => File[$path],
   }
 }
