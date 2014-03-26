@@ -2,7 +2,7 @@
 #
 # Represents a single Subversion repository
 define subversion::repository (
-  $ensure => 'present',
+  $ensure = 'present',
 ) {
   if (! ($ensure in [ present, absent ])) {
     fail('ensure parameter must be present or absent')
