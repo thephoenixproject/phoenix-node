@@ -2,7 +2,7 @@
 #
 # Installs the Apache WWWW package
 class apache::package () inherits apache::params {
-  if ($apache::disabled || $apache::absent) {
+  if ($apache::absent) {
     $ensure = 'present'
   } else {
     $ensure = 'absent'

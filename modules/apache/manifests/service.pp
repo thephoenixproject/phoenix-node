@@ -2,7 +2,7 @@
 #
 # Manages the Apache WWW service
 class apache::service () inherits apache::params {
-  if ($apache::disabled || $apache::absent) {
+  if ($apache::disabled or $apache::absent) {
     $ensure => 'stopped'
   } else {
     $ensure => 'running'
