@@ -6,4 +6,5 @@ class apache (
   $www_root_directory = $apache::params::www_root_directory,
 ) inherits apache::params {
   contain apache::package
+  contain apache::service
 }
