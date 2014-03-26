@@ -34,5 +34,6 @@ define subversion::repository (
   exec { "create-repo-${name}":
     command => "svnadmin create ${path}",
     require => File[$path],
+    unless  => "test -d ${path}/db",
   }
 }
