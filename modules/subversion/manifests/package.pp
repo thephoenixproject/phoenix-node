@@ -3,6 +3,6 @@
 # Manages the Subversion installation
 class subversion::package inherits subversion::params {
   package { 'subversion':
-    ensure => $subversion::$_ensure,
+    ensure => $subversion::_ensure,
   }
 }
