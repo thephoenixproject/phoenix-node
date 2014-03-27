@@ -1,7 +1,8 @@
 #include papply
 
+# All internal execs will use this path by default
 Exec {
-  path => '/usr/bin:/usr/sbin',
+  path => '/bin:/sbin:/usr/bin:/usr/sbin',
 }
 
 yumrepo { 'internal':
@@ -11,9 +12,12 @@ yumrepo { 'internal':
 }
 
 #include java
-#include maven
 #include sonar
 #include nexus
+
+  maven { '3.0.5' :
+
+  }
 
   include jenkins
 
