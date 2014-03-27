@@ -34,3 +34,14 @@ yumrepo { 'internal':
     ispinned => true,
   }
 
+  jenkins::plugin { 'cloudbees-folder':
+    plugin_name => 'cloudbees-folder',
+    version => '4.5',
+  }
+
+  jenkins::plugin { 'credentials':
+    plugin_name => 'credentials',
+    version => '1.10',
+    forceupdate => true,
+  }
+
