@@ -1,8 +1,8 @@
-# Define: apache::modules::mod_subversion::anonymous
+# Define: apache::mods::subversion::anonymous
 #
 # Enables mod_svn with full anonymous read/write access
 # to a provided location.
-define apache::modules::mod_subversion::anonymous () {
+define apache::mods::subversion::anonymous () {
   include apache::params
 
   $conf_path = "${apache::params::conf_d_directory}/${name}.conf"
