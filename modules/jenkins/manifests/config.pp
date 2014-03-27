@@ -5,6 +5,8 @@ class jenkins::config {
   $adminAddress = $jenkins::adminAddress
   $jenkinsUrl = $jenkins::jenkinsUrl
 
+  $mavenInstalls = [ {name => 'Maven 3.0.5', home => '/opt/apache-maven-3.0.5'} ]
+
   # This file sets the parameters used the Jenkins init.d script
   file { '/etc/sysconfig/jenkins':
     source => 'puppet:///modules/jenkins/jenkins',
@@ -19,9 +21,9 @@ class jenkins::config {
   }
 
   file { "$jenkins::jenkins_home/hudson.tasks.Maven.xml" :
-    source => 'puppet:///modules/jenkins/hudson.tasks.Maven.xml',
     owner => "jenkins",
     group => "jenkins",
+    content => template("jenkins/hudson.tasks.Maven.xml.erb"),
   }
 
   file { "$jenkins::jenkins_home/jenkins.model.JenkinsLocationConfiguration.xml" :

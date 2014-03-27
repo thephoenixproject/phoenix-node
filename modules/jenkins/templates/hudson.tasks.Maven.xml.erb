@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<hudson.tasks.Maven_-DescriptorImpl>
+  <installations>
+    <% @mavenInstalls.each do |maven| %>
+      <hudson.tasks.Maven_-MavenInstallation>
+        <name><%= maven['name'] %></name>
+        <home><%= maven['home'] %></home>
+        <properties/>
+      </hudson.tasks.Maven_-MavenInstallation>
+    <% end %>
+  </installations>
+</hudson.tasks.Maven_-DescriptorImpl>
+
