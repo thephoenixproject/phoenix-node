@@ -2,7 +2,9 @@
 #
 # Enables mod_svn with full anonymous read/write access
 # to a provided location.
-define apache::mods::mod_svn_anonymous () inherits apache::mods::mod_svn {
+define apache::mods::mod_svn_anonymous () {
+  $conf_path = "${apache::params::conf_d_directory}/${name}.conf"
+
   package { 'mod_dav_svn':
     ensure  => $apache::ensure,
     require => Class['apache::package'],
