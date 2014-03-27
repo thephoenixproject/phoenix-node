@@ -3,27 +3,26 @@ class jenkins::config {
   # This file sets the parameters used the Jenkins init.d script
   file { '/etc/sysconfig/jenkins':
     source => 'puppet:///modules/jenkins/jenkins',
+    owner => "jenkins",
+    group => "jenkins",
   }
 
-  file_line{ 'executor-count':
-    path  => "$jenkins::jenkins_home/config.xml",
-    match => "<numExecutors>.*</numExecutors>",
-    line  => "<numExecutors>12</numExecutors>",
+  file { "$jenkins::jenkins_home/config.xml" : 
+    source => 'puppet:///modules/jenkins/config.xml',
+    owner => "jenkins",
+    group => "jenkins",
   }
 
-  class { "jdk_config":
-
+  file { "$jenkins::jenkins_home/hudson.tasks.Maven.xml" :
+    source => 'puppet:///modules/jenkins/hudson.tasks.Maven.xml',
+    owner => "jenkins",
+    group => "jenkins",
   }
 
-  jenkins_jdk { "JDK 1.7.0" :
-    java_home => "/usr/java/jdk1.7.0_51",
-    config_file => "$jenkins::jenkins_home/config.xml",
+ file { "$jenkins::jenkins_home/jenkins.model.JenkinsLocationConfiguration.xml" :
+    source => 'puppet:///modules/jenkins/jenkins.model.JenkinsLocationConfiguration.xml',
+    owner => "jenkins",
+    group => "jenkins",
   }
 
-
-  jenkins_jdk { "JDK7" :
-    java_home => "/usr/lib/jvm/java-7-openjdk-amd64",
-    config_file => "$jenkins::jenkins_home/config.xml",
-    ensure => absent,
-  }
 }
