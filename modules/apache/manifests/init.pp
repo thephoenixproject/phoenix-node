@@ -10,5 +10,6 @@ class apache (
   }
 
   contain apache::package
+  contain apache::settings
   contain apache::service
 }
