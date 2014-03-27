@@ -25,4 +25,11 @@ class jenkins::config {
     group => "jenkins",
   }
 
+  file { "$jenkins::jenkins_home/hudson.tasks.Mailer.xml" :
+    source => 'puppet:///modules/jenkins/hudson.tasks.Mailer.xml',
+    owner => "jenkins",
+    group => "jenkins",
+  }
+
+
 }
