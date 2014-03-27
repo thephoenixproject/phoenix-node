@@ -5,7 +5,13 @@ class jenkins::config {
     source => 'puppet:///modules/jenkins/jenkins',
   }
 
- class { "jdk_config":
+  file_line{ 'executor-count':
+    path  => "$jenkins::jenkins_home/config.xml",
+    match => "<numExecutors>.*</numExecutors>",
+    line  => "<numExecutors>12</numExecutors>",
+  }
+
+  class { "jdk_config":
 
   }
 
