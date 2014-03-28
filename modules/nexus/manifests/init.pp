@@ -6,6 +6,19 @@ class nexus (
   $nexus_group    = $nexus::params::nexus_group,
   ) inherits nexus::params {
   include stdlib
+
+ $repositories = [
+     { id => 'VGI_SNAPSHOTS',
+       name => 'VGI Snapshots',
+       providerHint => 'maven2',
+       writePolicy => 'ALLOW_WRITE',
+       repositoryPolicy => 'SNAPSHOT'
+     },
+     { id => 'VGI_RELEASES',
+       name => 'VGI Releases',
+       providerHint => 'maven2',
+       writePolicy => 'ALLOW_WRITE_ONCE',
+       repositoryPolicy => 'RELEASE'} ]
 	     
   class{ 'nexus::config':
     nexus_home_dir => $nexus_home_dir,

@@ -6,8 +6,17 @@ class nexus::config (
   $nexus_group,
   ) inherits nexus::params {
   
+  $repositories = $nexus::repositories 
   $nexus_properties_file = "${nexus_home_dir}/conf/nexus.properties"
   
+  file { '/usr/local/sonatype-work/nexus/conf/nexus.xml' :
+    content => template('nexus/nexus.xml.erb'),
+    group => 'nexus',
+    owner => 'nexus',
+    notify => Service['nexus'],
+  } 
+
+
   file_line{ 'nexus-appliction-host':
     path  => $nexus_properties_file,
     match => '^application-host',
@@ -27,13 +36,6 @@ class nexus::config (
 
   file { '/home/nexus': 
     ensure => directory,
-  }
-
-  file { '/usr/local/sonatype-work/nexus/conf/nexus.xml' :
-    source => 'puppet:///modules/nexus/nexus.xml',
-    group => 'nexus',
-    owner => 'nexus',
-    notify => Service['nexus'],
   }
 
   user { 'nexus':

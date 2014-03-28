@@ -231,46 +231,30 @@
         </memberRepositories>
       </externalConfiguration>
     </repository>
+
+    <% @repositories.each do |repository| %>
     <repository>
-      <id>VGI_Snapshots</id>
-      <name>VGI Snapshots</name>
+      <id><%= repository['id'] %></id>
+      <name><%= repository['name'] %></name>
       <providerRole>org.sonatype.nexus.proxy.repository.Repository</providerRole>
-      <providerHint>maven2</providerHint>
+      <providerHint><%= repository['providerHint'] %></providerHint>
       <localStatus>IN_SERVICE</localStatus>
       <notFoundCacheTTL>1440</notFoundCacheTTL>
       <userManaged>true</userManaged>
       <exposed>true</exposed>
       <browseable>true</browseable>
-      <writePolicy>ALLOW_WRITE</writePolicy>
+      <writePolicy><%= repository['writePolicy'] %></writePolicy>
       <indexable>true</indexable>
       <searchable>true</searchable>
       <localStorage>
         <provider>file</provider>
       </localStorage>
       <externalConfiguration>
-        <repositoryPolicy>SNAPSHOT</repositoryPolicy>
+        <repositoryPolicy><%= repository['repositoryPolicy'] %></repositoryPolicy>
       </externalConfiguration>
     </repository>
-    <repository>
-      <id>VGI_Releases</id>
-      <name>VGI Releases</name>
-      <providerRole>org.sonatype.nexus.proxy.repository.Repository</providerRole>
-      <providerHint>maven2</providerHint>
-      <localStatus>IN_SERVICE</localStatus>
-      <notFoundCacheTTL>1440</notFoundCacheTTL>
-      <userManaged>true</userManaged>
-      <exposed>true</exposed>
-      <browseable>true</browseable>
-      <writePolicy>ALLOW_WRITE_ONCE</writePolicy>
-      <indexable>true</indexable>
-      <searchable>true</searchable>
-      <localStorage>
-        <provider>file</provider>
-      </localStorage>
-      <externalConfiguration>
-        <repositoryPolicy>RELEASE</repositoryPolicy>
-      </externalConfiguration>
-    </repository>
+    <% end %>
+
   </repositories>
   <repositoryGrouping>
     <pathMappings>
