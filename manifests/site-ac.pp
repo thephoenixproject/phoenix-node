@@ -13,7 +13,7 @@ yumrepo { 'internal':
 
 #include java
 #include sonar
-#include nexus
+include nexus
 
   maven { '3.0.5' :
 

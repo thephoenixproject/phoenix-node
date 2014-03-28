@@ -28,7 +28,14 @@ class nexus::config (
   file { '/home/nexus': 
     ensure => directory,
   }
-  
+
+  file { '/usr/local/sonatype-work/nexus/conf/nexus.xml' :
+    source => 'puppet:///modules/nexus/nexus.xml',
+    group => 'nexus',
+    owner => 'nexus',
+    notify => Service['nexus'],
+  }
+
   user { 'nexus':
     ensure => present,
     gid     => $nexus_group,
